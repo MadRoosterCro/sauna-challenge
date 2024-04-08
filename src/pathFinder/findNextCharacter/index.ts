@@ -1,33 +1,30 @@
 import { findCharacterDirection } from "../findCharacterDirection";
 import { findNextPosition } from "../findNextPosition";
 import { TItem } from "../../types";
-import { setCharacterPath } from "../../utils/characterPath";
-import { validateSpecialCasesForCharacter } from "../../utils/validator";
+import { setCharacterPath } from "../../helpers/characterPath";
+import { validateSpecialCasesForCharacter } from "../../helpers/validator";
 
-export const findNextCharacter = (element: TItem) => {
-  const { previousDirection, character } = element;
+export const findNextCharacter = (item: TItem) => {
+  const { previousDirection, character } = item;
 
   const { directions } = findCharacterDirection({
     direction: previousDirection,
     character,
   });
 
-  setCharacterPath(element);
+  setCharacterPath(item);
 
-  let nextPossibleElement: TItem[] = [];
+  let nextPossibleitem: TItem[] = [];
 
   directions.forEach((possibleNextPosition) => {
-    const nextPosition = findNextPosition(
-      possibleNextPosition,
-      element.position
-    );
+    const nextPosition = findNextPosition(possibleNextPosition, item.position);
 
     if (nextPosition) {
-      nextPossibleElement = [...nextPossibleElement, nextPosition];
+      nextPossibleitem = [...nextPossibleitem, nextPosition];
     }
   });
 
-  validateSpecialCasesForCharacter(character, nextPossibleElement);
+  validateSpecialCasesForCharacter(character, nextPossibleitem);
 
-  return nextPossibleElement[0];
+  return nextPossibleitem[0];
 };

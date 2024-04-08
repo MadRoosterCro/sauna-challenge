@@ -1,7 +1,7 @@
 import { POSSIBLE_CHARACTERS, regex, TPossibleCharacters } from "../constants";
 import { TItem, TPosition } from "../types";
-import { getMap } from "../utils/map";
-import { getPosition, setPosition } from "../utils/trackPositionDuplication";
+import { getMap } from "./map";
+import { getPosition, setPosition } from "./trackPositionDuplication";
 
 export const isValidNextPosition = (position: TPosition) => {
   const map = getMap();
@@ -37,26 +37,23 @@ export const isValidNextPosition = (position: TPosition) => {
 
 export const validateSpecialCasesForCharacter = (
   character: TPossibleCharacters,
-  nextPossibleElement: TItem[]
+  nextItem: TItem[]
 ) => {
   if (character === POSSIBLE_CHARACTERS.TURN) {
-    if (nextPossibleElement.length === 0) {
+    if (nextItem.length === 0) {
       throw new Error("Fake turn!");
     }
 
-    if (nextPossibleElement.length > 1) {
+    if (nextItem.length > 1) {
       throw new Error("No fork in the path!");
     }
   }
 
-  if (
-    character === POSSIBLE_CHARACTERS.START &&
-    nextPossibleElement.length > 1
-  ) {
+  if (character === POSSIBLE_CHARACTERS.START && nextItem.length > 1) {
     throw new Error("No multiple starting paths!");
   }
 
-  if (character !== POSSIBLE_CHARACTERS.END && !nextPossibleElement.length) {
+  if (character !== POSSIBLE_CHARACTERS.END && !nextItem.length) {
     throw new Error("Broken path!");
   }
 };

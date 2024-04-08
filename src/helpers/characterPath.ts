@@ -2,8 +2,8 @@ import { TItem } from "../types";
 
 export let characterPath = "";
 
-export const setCharacterPath = (element: TItem) => {
-  characterPath = characterPath + element.character;
+export const setCharacterPath = (item: TItem) => {
+  characterPath = characterPath + item.character;
 };
 
 export const getCharacterPath = () => {

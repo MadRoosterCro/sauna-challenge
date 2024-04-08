@@ -1,7 +1,7 @@
 import { TDirection, TPossibleCharacters } from "../../constants";
 import { TItem, TPosition } from "../../types";
-import { getMap } from "../../utils/map";
-import { isValidNextPosition } from "../../utils/validator";
+import { getMap } from "../../helpers/map";
+import { isValidNextPosition } from "../../helpers/validator";
 
 export const findNextPosition = (
   possibleDirection: TDirection,
