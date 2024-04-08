@@ -1,10 +1,10 @@
 # Possible soultion Code Challenge
 
-## How to run the project:
+## Running the solution:
 
-1. Install all needed dependencies with **yarn install**
-2. Run the project with **yarn run dev** command
-3. The src/main.ts file is staring point where the user can switch between 6 map examples the where provided in code challange. File names are changed on line 11 where user can input map names, for example mapExample1, mapExample2, mapExample3, etc...
+1. **yarn**
+2. **yarn dev**
+3. Choose from the map examples to try out the PathFinder
 
 Follow a path of characters & collect letters:
 
